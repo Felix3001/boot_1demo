@@ -1,15 +1,22 @@
 pipeline {
   agent any
   stages {
-    stage('21') {
+    stage('test1') {
       steps {
-        echo 'hello spring'
+        echo 'test1....'
       }
     }
 
-    stage('31') {
+    stage('Build') {
       steps {
-        build 'spring01'
+        sh 'mvn clean package'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo 'pipeline success!'
+        archive 'target/*.jar'
       }
     }
 
