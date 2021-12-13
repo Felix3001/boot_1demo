@@ -16,7 +16,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'pipeline success!'
-        archive 'target/*.jar'
+        archiveArtifacts 'target/*.jar'
       }
     }
 
