@@ -1,0 +1,24 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+stages:
+  - stage: MAT
+    jobs:
+      - job: MAT
+        condition: and(not(eq(variables['skip_MAT'], 'true')), not(eq(variables['isEliteBuds'], 'true')))
+        displayName: MAT
+        pool: "myHP MAT TEST"
+        steps:
+          - checkout: automation 
+          #Run MAT test using Maven command
+          - task: CmdLine@2
+            displayName: "Executing MAT"
+            inputs:
+              script: |
+                cd $(Build.Repository.LocalPath)
+                mvn clean test 
