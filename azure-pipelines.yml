@@ -21,4 +21,4 @@ stages:
             inputs:
               script: |
                 cd $(Build.Repository.LocalPath)
-                mvn clean test 
+                mvn clean test -DdefaultSuiteFile=TestSuite/TestSuite_ComCent_Registration.xml -e -U
