@@ -12,9 +12,8 @@ stages:
       - job: MAT
         condition: and(not(eq(variables['skip_MAT'], 'true')), not(eq(variables['isEliteBuds'], 'true')))
         displayName: MAT
-        pool: "myHP MAT TEST"
+        pool: "Default"
         steps:
-          - checkout: automation 
           #Run MAT test using Maven command
           - task: CmdLine@2
             displayName: "Executing MAT"
